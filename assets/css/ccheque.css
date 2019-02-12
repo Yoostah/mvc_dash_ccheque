@@ -1,0 +1,14 @@
+div.logo > a > img {
+  width: 70px;
+  margin: 0px 5px;
+}
+
+img#erro_404{
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -400px;
+}

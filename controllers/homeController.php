@@ -2,8 +2,11 @@
 class homeController extends controller {
 
 	public function index() {
-		$dados = array();		
-
+		$dados = array(
+			'titulo' => 'Painel de Controle',
+			'menu' => 'home'
+		);		
+		
 		$this->loadTemplate('home', $dados);
 
 	}

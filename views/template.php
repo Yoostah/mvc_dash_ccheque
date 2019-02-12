@@ -2,16 +2,18 @@
 <html lang="pt-br">
 
 <head>
-  <title>Controle de Cheque</title>
+  <title>Controle de Cheque </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/dash/css/google_material_icons.css" />
+  <link rel="stylesheet" href="assets/dash/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="assets/dash/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <!-- Meu CSS -->
+  <link rel="stylesheet" href="assets/css/ccheque.css">
 </head>
 
 <body class="dark-edition">
@@ -23,35 +25,35 @@
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="<?php echo BASE_URL; ?>" class="simple-text logo-normal">CCHEQUE</a>
+        <a href="<?php echo BASE_URL; ?>" class="simple-text logo-normal"><img src="assets/imagens/logo_cheque.png" alt="Controle de Cheque">CCHEQUE</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item   ">
-            <a class="nav-link" href="javascript:void(0)">
+          <li class="nav-item <?php echo (isset($menu) && $menu == 'home') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?php echo BASE_URL; ?>">
               <i class="material-icons">dashboard</i>
               <p>Painel de Controle</p>
             </a>
           </li>
-					<li class="nav-item active ">
+					<li class="nav-item <?php echo (isset($menu) && $menu == 'cheque') ? 'active' : '' ?>">
             <a class="nav-link" href="<?php echo BASE_URL; ?>cheque">
               <i class="material-icons">local_atm</i>
               <p>Cheques</p>
             </a>
           </li>
-					<li class="nav-item ">
+					<li class="nav-item <?php echo (isset($menu) && $menu == 'banco') ? 'active' : '' ?>">
             <a class="nav-link" href="<?php echo BASE_URL; ?>banco">
               <i class="material-icons">store_mall_directory</i>
               <p>Bancos</p>
             </a>
           </li>
-					<li class="nav-item ">
+					<li class="nav-item <?php echo (isset($menu) && $menu == 'feriado') ? 'active' : '' ?>">
             <a class="nav-link" href="<?php echo BASE_URL; ?>feriado">
               <i class="material-icons">calendar_today</i>
               <p>Feriados</p>
             </a>
           </li>
-					<li class="nav-item ">
+					<li class="nav-item <?php echo (isset($menu) && $menu == 'user') ? 'active' : '' ?>">
             <a class="nav-link" href="<?php echo BASE_URL; ?>user">
               <i class="material-icons">account_circle</i>
               <p>Perfil de Usuario</p>
@@ -66,7 +68,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Painel de Controle</a>
+            <a class="navbar-brand" href="javascript:void(0)"><?php echo (isset($titulo) && !empty($titulo)) ? $titulo : 'Página não Encontrada' ?></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -92,7 +94,7 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <!-- your content here -->
+          <?php $this->loadViewInTemplate($viewName, $viewData); ?>
         </div>
       </div>
       <footer class="footer">
@@ -113,12 +115,12 @@
   <script src="./assets/dash/js/core/jquery.min.js"></script>
   <script src="./assets/dash/js/core/popper.min.js"></script>
   <script src="./assets/dash/js/core/bootstrap-material-design.min.js"></script>
-  <script src="https://unpkg.com/default-passive-events"></script>
+  <script src="./assets/dash/js/events.js"></script>
   <script src="./assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script async defer src="./assets/dash/js/buttons.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
   <!-- Chartist JS -->
   <script src="./assets/dash/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -292,76 +294,3 @@
 </body>
 
 </html>
-
-
-
-
-<?php /*
-<html>
-<head>
-	<title>Controle de Cheques</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css"> 
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/_css.css">
-</head>
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <a class="navbar-brand" href="<?php echo BASE_URL; ?>"><img src="<?php echo BASE_URL; ?>assets/imagens/logo.png" alt="CCHEQUE"></a>
-		    </div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav">
-		        <li class="dropdown">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo BASE_URL; ?>cheque/cadastro">Cheque</a></li>
-						<!--<li><a href="main.php?func=cadGCheque">Grupo de Cheque</a></li>-->
-						<!--<li><a href="#">Usuários</a></li>-->
-						<li role="separator" class="divider"></li>
-						<li><a href="<?php echo BASE_URL; ?>feriado/cadastro">Feriados</a></li>
-						<li><a href="<?php echo BASE_URL; ?>banco/cadastro">Bancos</a></li>
-					</ul>	 
-				</li>
-				<li class="dropdown">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Consulta<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo BASE_URL; ?>cheque/consulta">Cheque</a></li>
-						<li role="separator" class="divider"></li>
-					<!--	<li><a href="#">Usuários</a></li>-->
-						<li><a href="<?php echo BASE_URL; ?>feriado/consulta">Feriados</a></li>
-						<li><a href="<?php echo BASE_URL; ?>banco/consulta">Bancos</a></li>
-					</ul>	 
-				</li>
-		      	<li><a href="<?php echo BASE_URL; ?>sobre">Sobre</a></li>
-		      </ul>
-		      <ul class="nav navbar-nav navbar-right">
-		        <li><p class="msgBemVindo">Bem vindo <?php echo $_SESSION['nome']; ?></p></li>
-		        <li><a href="<?php echo BASE_URL; ?>sair">Sair</a></li>
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-		</nav>
-		<div class="conteudo">
-			<?php
-				//$session_usu_id = addslashes($_SESSION['id']);
-				$this->loadViewInTemplate($viewName, $viewData);
-			?>
-		</div>
-
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-</body>
-</html>
-
-*/ ?>

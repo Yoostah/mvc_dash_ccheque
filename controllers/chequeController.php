@@ -2,9 +2,11 @@
 class chequeController extends controller {
 
 	public function index() {
-		$dados = array();		
-
-		$this->loadViewInTemplate('cheque', $dados);
+		$dados = array(
+			'titulo' => 'Index Cheque',
+			'menu' => 'cheque'
+		);
+		$this->loadTemplate('cheque', $dados);
 
 	}
 	

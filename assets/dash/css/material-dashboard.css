@@ -18669,7 +18669,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .dark-edition {
-  background-color: #1a2035;
+  background-color: #86838333;
 }
 
 .dark-edition .btn,
@@ -19553,8 +19553,8 @@ Copyright (c) 2015 Daniel Eden
 
 .dark-edition .sidebar .sidebar-background:after,
 .dark-edition .sidebar {
-  background: #1f283e;
-  opacity: .94;
+  //background: #1f283e;
+  //opacity: .94;
 }
 
 .dark-edition .sidebar[data-background-color="black"] .nav li:not(.active) a,
@@ -19585,7 +19585,7 @@ Copyright (c) 2015 Daniel Eden
 
 .dark-edition .navbar:not([class*="bg-"]) .navbar-brand,
 .dark-edition .navbar:not([class*="bg-"]) .collapse .navbar-nav .nav-item .nav-link {
-  color: #a9afbbd1;
+  color: #353535cc;
 }
 
 .dark-edition .navbar[class*="bg-"] .form-control::-moz-placeholder {
