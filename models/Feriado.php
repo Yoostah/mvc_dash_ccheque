@@ -112,7 +112,7 @@ class Feriado extends model {
 		return $array;
 	}
 
-	public function addAnuncio($titulo, $categoria, $valor, $descricao, $estado) {
+	public function addFeriado($nome, $data, $usu_id, $tipo, $cidade, $descricao) {
 		
 		$sql = $this->db->prepare("INSERT INTO anuncios SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado");
 		$sql->bindValue(":titulo", $titulo);
@@ -124,7 +124,7 @@ class Feriado extends model {
 		$sql->execute();
 	}
 
-	public function editAnuncio($titulo, $categoria, $valor, $descricao, $estado, $fotos, $id) {
+	public function editFeriado($titulo, $categoria, $valor, $descricao, $estado, $fotos, $id) {
 		
 
 		$sql = $this->db->prepare("UPDATE anuncios SET titulo = :titulo, id_categoria = :id_categoria, id_usuario = :id_usuario, descricao = :descricao, valor = :valor, estado = :estado WHERE id = :id");
