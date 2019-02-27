@@ -94,6 +94,7 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+          <?php echo $viewName ?>
           <?php $this->loadViewInTemplate($viewName, $viewData); ?>
         </div>
       </div>

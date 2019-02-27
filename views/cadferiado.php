@@ -15,7 +15,7 @@
 		<div class="card card-plain">
 			<div class="card-header card-header-primary">
 				<h4 class="card-title">Feriados</h4>
-				<p class="card-category">Relação dos Feriados cadastrados</p>
+				<p class="card-category">CADFERIADO</p>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -35,25 +35,14 @@
 							</th>							
 						</thead>
 						<tbody>
-							<?php 
-								foreach($feriados as $key => $value){
-									echo '<tr>';
-									echo '<td>'.$value['fer_data'].'</td>';
-									echo '<td>'.$value['fer_nome'].'</td>';
-									echo '<td>'.$value['fer_tipo'].'</td>';
-									echo '<td>'.$value['fer_cidade'].'</td>';									
-									echo '</tr>';
-								} 
-								?>
+							
 						</tbody>
 					</table>
 				</div>
 			</div>
 			
 		</div>
-		<form>
-			<button formaction="<?php echo BASE_URL; ?>feriado/cadastrar" class="btn btn-warning pull-right">Adicionar Feriado</button>			
-		</form>		
+			<a href="<?php echo BASE_URL; ?>feriado/cadastrar">Adicionar Feriados</a>				
         <div class="clearfix"></div>
 	</div>
 </div>
