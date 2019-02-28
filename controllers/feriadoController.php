@@ -19,20 +19,52 @@ class feriadoController extends controller {
 	}
 
 	public function cadastrar() {
+		$estados = new _UF();
+
+		$estados = $estados->listUF();
+
 		$dados = array(
 			'titulo' => 'Cadastrar Feriado',
 			'menu' => 'feriado',
+			'estados' => $estados
 		);	
 
 		$this->loadTemplate('cadferiado', $dados);
 
 	}
 
-	/*public function consulta() {
-		$dados = array();	
+	public function selectMun_UF(){
+		$municipios = new _MUNICIPIO();
 
-		$this->loadTemplate('consferiado', $dados);
+		$municipios_json = $municipios->listMun_UF_JSON($_GET['cod_estados']);
+		
+		echo $municipios_json;
 
-	}*/
+	}
+
+	public function salvar() {
+
+		$feriado = new Feriado();
+
+		$usu_id = 1;
+
+		$feriado_nome = $_POST['nome'];
+		$feriado_data = date("Y-m-d", strtotime($_POST['data']));
+		$feriado_tipo = $_POST['tipo'];
+		$feriado_municipio = $_POST['cod_cidade'];
+
+		if(isset($_POST['descricao']) && !empty($_POST['descricao']))
+			$feriado_descricao = $_POST['descricao'];
+		else
+			$feriado_descricao = '';		
+		
+		$feriado = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+		
+		if($feriado)
+			header("Location: ".BASE_URL.feriado);
+		else	
+			header("Location: ".BASE_URL.notfound);
+		
+	}
 
 }

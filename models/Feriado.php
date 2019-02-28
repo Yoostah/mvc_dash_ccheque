@@ -36,14 +36,18 @@ class Feriado extends model {
      *
      * @return boolean
      */
-    /*public function addUF(int $cod, string $nome, string $sigla){
-        $sql = $this->prepare("INSERT INTO uf_estado SET uf_cod = :cod, uf_nome = :nome, uf_sigla = :sigla");
-        $sql->bindValue(":cod", $cod);
+    public function addFeriado(int $usu_id, string $nome, string $data, string $tipo, int $municipio, string $descricao = ""){
+        
+        $sql = $this->db->prepare("INSERT INTO feriados SET fer_nome = :nome, fer_data = STR_TO_DATE(:data, '%Y-%m-%d'), fer_usu = :user, fer_tipo = :tipo, fer_mun_id = :municipio, fer_descricao = :descricao");
         $sql->bindValue(":nome", $nome);
-        $sql->bindValue(":sigla", $sigla);
+        $sql->bindValue(":data", $data);
+        $sql->bindValue(":user", $usu_id);
+        $sql->bindValue(":tipo", $tipo);
+        $sql->bindValue(":municipio", $municipio);
+        $sql->bindValue(":descricao", $descricao);
+        
         return $sql->execute();
-
-    }*/
+    }
 
     /**
      * deleteUF

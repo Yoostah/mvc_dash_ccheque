@@ -69,15 +69,15 @@ class _UF extends model {
     public function listUF(){
         $array = array();
 
-        $sql = $this->db->prepare("SELECT * FROM uf_estado");
+        $sql = $this->db->prepare("SELECT * FROM uf_estado ORDER BY uf_nome");
         $sql->execute();
 
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();
         }
-        echo "Aqui";
         return $array;
     }
+    
 
 }
 

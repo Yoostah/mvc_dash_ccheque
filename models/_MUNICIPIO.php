@@ -1,20 +1,31 @@
 <?php
-class _MUNICIPIO extends model {
+class _MUNICIPIO extends model {    
 
-    public function getMunicipio(){
+    /**
+     * listMun_UF_JSON
+     * ESTA FUNCAO RECEBE COMO PARÂMETRO UM $uf_cod DE UM ESTADO E RETORNA UM JSON COM A LISTAGEM DE TODDOS OS MUNICÍPIOS DO ESTADO SOLICITADO.
+     * 
+     * @return json
+     */
+    public function listMun_UF_JSON($uf_cod){
+        $array = array();
 
-    }
+        $sql = $this->db->prepare("SELECT mun_cod, mun_nome FROM mun_municipio WHERE uf_id = :estado ORDER BY mun_nome");
+        $sql->bindValue(":estado", $uf_cod);
+        $sql->execute();
 
-    public function addMunicipio(){
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
 
-    }
+            foreach ($array as $key => $value) {
+                $cidades[] = array(
+                    'cod_cidade'  => $value['mun_cod'],
+                    'nome_cidade' => $value['mun_nome'],
+                );
+            }
+        }       
 
-    public function deleteMunicipio(){
-
-    }
-
-    public function listMunicipio(){
-
+        return ( json_encode( $cidades ) );
     }
 
 }

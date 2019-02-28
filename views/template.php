@@ -8,24 +8,24 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="assets/dash/css/google_material_icons.css" />
-  <link rel="stylesheet" href="assets/dash/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/dash/css/google_material_icons.css" />
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="assets/dash/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link href="<?php echo BASE_URL; ?>assets/dash/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- Meu CSS -->
-  <link rel="stylesheet" href="assets/css/ccheque.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/ccheque.css">
 </head>
 
 <body class="dark-edition">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange" data-background-color="black" data-image="./assets/dash/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="orange" data-background-color="black" data-image="<?php echo BASE_URL; ?>assets/dash/img/sidebar-2.jpg">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="<?php echo BASE_URL; ?>" class="simple-text logo-normal"><img src="assets/imagens/logo_cheque.png" alt="Controle de Cheque">CCHEQUE</a>
+        <a href="<?php echo BASE_URL; ?>" class="simple-text logo-normal"><img src="<?php echo BASE_URL; ?>assets/imagens/logo_cheque.png" alt="Controle de Cheque">CCHEQUE</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -94,7 +94,6 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <?php echo $viewName ?>
           <?php $this->loadViewInTemplate($viewName, $viewData); ?>
         </div>
       </div>
@@ -113,23 +112,23 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="./assets/dash/js/core/jquery.min.js"></script>
-  <script src="./assets/dash/js/core/popper.min.js"></script>
-  <script src="./assets/dash/js/core/bootstrap-material-design.min.js"></script>
-  <script src="./assets/dash/js/events.js"></script>
-  <script src="./assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/core/jquery.min.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/core/popper.min.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/core/bootstrap-material-design.min.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/events.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="./assets/dash/js/buttons.js"></script>
+  <script async defer src="<?php echo BASE_URL; ?>assets/dash/js/buttons.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
   <!-- Chartist JS -->
-  <script src="./assets/dash/js/plugins/chartist.min.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="./assets/dash/js/plugins/bootstrap-notify.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/dash/js/material-dashboard.js?v=2.1.0"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/js/material-dashboard.js?v=2.1.0"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="./assets/dash/demo/demo.js"></script>
+  <script src="<?php echo BASE_URL; ?>assets/dash/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -288,6 +287,32 @@
             clearInterval(simulateWindowResize);
           }, 1000);
 
+        });        
+
+        $('#cod_estados').change(function(){
+          if( $(this).val() ) {
+            $('#cod_cidade').hide();
+            $('.carregando').show();
+            $.getJSON(
+              'selectMun_UF',
+              {
+                cod_estados: $(this).val(),
+                ajax: 'true'
+              }, function(j){
+                var options = '<option value=""></option>';
+                for (var i = 0; i < j.length; i++) {
+                  options += '<option value="' +
+                    j[i].cod_cidade + '">' +
+                    j[i].nome_cidade + '</option>';
+                }
+                $('#cod_cidade').html(options).show();
+                $('.carregando').hide();
+              });
+          } else {
+            $('#cod_cidade').html(
+              '<option value="">-- Escolha um estado --</option>'
+            );
+          }
         });
       });
     });

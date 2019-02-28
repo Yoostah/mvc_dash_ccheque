@@ -1,48 +1,76 @@
-<?php 
-//$string = file_get_contents("./feriados.json");
-//$json = json_decode($string, true);
-
-?>
-<style>
-	.break-word {
-		word-wrap: break-word;
-		width: 100%;
-		table-layout: fixed;
-	}
-</style>
 <div class="row">
-	<div class="col-md-12">
-		<div class="card card-plain">
-			<div class="card-header card-header-primary">
-				<h4 class="card-title">Feriados</h4>
-				<p class="card-category">CADFERIADO</p>
+	<div class="col">
+		<div class="card">
+			<div class="card-header card-header-warning">
+				<h4 class="card-title">Cadastro de Feriado</h4>
+				<p class="card-category">Complete as informações</p>
 			</div>
 			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<th>
-								Data
-							</th>
-							<th>
-								Nome
-							</th>
-							<th>
-								Tipo
-							</th>
-							<th>
-								Cidade
-							</th>							
-						</thead>
-						<tbody>
-							
-						</tbody>
-					</table>
-				</div>
+				<form method="POST" action="<?php echo BASE_URL; ?>feriado/salvar">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="bmd-label-floating">Nome</label>
+								<input type="text" class="form-control" name="nome" required>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="bmd-label-floating">Data</label>
+								<input type="date" class="form-control" name="data" required>
+							</div>
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="bmd-label-floating">Tipo</label>
+								<input type="text" class="form-control" name="tipo" required>
+							</div>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="bmd-label-floating">Estado</label>
+								<select name="cod_estados" id="cod_estados" class="form-control">
+									<option value=""></option>
+									<?php
+										foreach ($estados as $key => $value) {
+											echo '<option value="'.$value['uf_cod'].'">'.$value['uf_nome'].'</option>';
+										}									
+									?>
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="bmd-label-floating">Município</label>
+								<select name="cod_cidade" id="cod_cidade" class="form-control" required>
+									  <option value="">-- Escolha um estado --</option>
+								</select>	  
+							</div>
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Descrição (opcional)</label>
+								<div class="form-group">
+									<label class="bmd-label-floating"> Adicione uma breve descrição do Feriado</label>
+									<textarea class="form-control" rows="5" name="descricao"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-warning pull-right">Cadastrar Feriado</button>
+					<div class="clearfix"></div>
+				</form>
 			</div>
-			
 		</div>
-			<a href="<?php echo BASE_URL; ?>feriado/cadastrar">Adicionar Feriados</a>				
-        <div class="clearfix"></div>
-	</div>
+	</div>	
 </div>
+<script>
+
+</script>	
