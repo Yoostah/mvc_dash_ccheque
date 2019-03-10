@@ -314,9 +314,18 @@
             );
           }
         });
+
+        
       });
     });
   </script>
+  <?php 
+  if (isset($cadastro) && $cadastro === true )
+	  echo "<script>$(function() { $.notify({ message: 'Cadastrado com Sucesso!' },{ type: 'success' })});</script>";
+  elseif (isset($cadastro) ) 
+    echo "<script>$(function() { $.notify({ title: '<strong>Não foi possível efetuar o cadastro</strong><br>',
+      message: '[".addslashes($cadastro)."]'},{ type: 'danger' })});</script>";
+  ?>
 </body>
 
 </html>

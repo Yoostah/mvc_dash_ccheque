@@ -3,13 +3,7 @@
 //$json = json_decode($string, true);
 
 ?>
-<style>
-	.break-word {
-		word-wrap: break-word;
-		width: 100%;
-		table-layout: fixed;
-	}
-</style>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="card card-plain">

@@ -58,12 +58,17 @@ class feriadoController extends controller {
 		else
 			$feriado_descricao = '';		
 		
-		$feriado = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+		$cadastro = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
 		
-		if($feriado)
-			header("Location: ".BASE_URL.feriado);
-		else	
-			header("Location: ".BASE_URL.notfound);
+		$dados = array(
+			'titulo' => 'Index Feriado',
+			'menu' => 'feriado',
+			'cadastro' => $cadastro,
+			'feriados' => $feriado->listFeriado($usu_id) 
+		);
+
+		$this->loadTemplate('feriado', $dados);	
+		
 		
 	}
 

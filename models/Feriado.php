@@ -46,7 +46,14 @@ class Feriado extends model {
         $sql->bindValue(":municipio", $municipio);
         $sql->bindValue(":descricao", $descricao);
         
-        return $sql->execute();
+        $sql->execute();
+        
+        if($sql->errorCode() == 0) {
+            return true;
+        } else {           
+            $error = $sql->errorInfo();
+            return ($error[2]);
+        }
     }
 
     /**
