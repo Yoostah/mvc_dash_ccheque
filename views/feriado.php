@@ -26,7 +26,7 @@
 							<th>
 								Cidade
 							</th>
-							<th>
+							<th class="text-right">
 								Opções
 							</th>							
 						</thead>
@@ -41,9 +41,10 @@
 										echo '<td>'.$value['fer_nome'].'</td>';
 										echo '<td>'.$value['fer_tipo'].'</td>';
 										echo '<td>'.$value['fer_cidade'].'</td>';
-										echo '<td class="td-actions text-right">											
-												<a href="javascript:;" onclick="editar_feriado('.$value['fer_id'].')"><i class="material-icons">edit</i></a>
-												<a href="javascript:;" onclick="deletar_feriado('.$value['fer_id'].')"><i class="material-icons">close</i></a>											
+										echo '<td class="td-actions text-right">
+												<button rel="tooltip" data-placement="left" data-original-title="'.$value['fer_descricao'].'" class="btn btn-link"><i class="material-icons">info</i></button>
+												<button type="button" rel="tooltip" data-placement="left" data-original-title="Editar Feriado" class="btn btn-link" href="javascript:;" onclick="editar_feriado('.$value['fer_id'].')"><i class="material-icons">edit</i></button>
+												<button type="button" rel="tooltip" data-placement="left" data-original-title="Deletar Feriado" class="btn btn-link" href="javascript:;" onclick="deletar_feriado('.$value['fer_id'].')"><i class="material-icons">close</i></button>											
 											</td>';									
 										echo '</tr>';
 									} 
