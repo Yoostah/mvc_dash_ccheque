@@ -129,6 +129,10 @@
   <script src="<?php echo BASE_URL; ?>assets/dash/js/material-dashboard.js?v=2.1.0"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo BASE_URL; ?>assets/dash/demo/demo.js"></script>
+  <!-- JS do Projeto -->
+  <script src="<?php echo BASE_URL; ?>assets/js/ccheque.js"></script>
+   <!-- JS SweetAlert -->
+  <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

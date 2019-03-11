@@ -33,6 +33,33 @@ class feriadoController extends controller {
 
 	}
 
+	public function deletar() {
+		if (isset($_POST['id']) && !empty($_POST['id'])){
+			$id = addslashes($_POST['id']);
+			$feriado = new Feriado();
+			$feriado->deleteFeriado($id);
+		}
+		$this->index();
+	}
+
+	public function editar($id) {
+		if (isset($id)){
+			$feriado = new Feriado();
+			$feriado->getFeriado($id);
+		
+			$dados = array(
+				'titulo' => 'Cadastrar Feriado',
+				'menu' => 'feriado',
+				'estados' => $estados
+			);	
+	
+			$this->loadTemplate('cadferiado', $dados);
+		}
+
+		
+
+	}
+
 	public function selectMun_UF(){
 		$municipios = new _MUNICIPIO();
 

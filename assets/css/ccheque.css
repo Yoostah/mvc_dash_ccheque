@@ -12,3 +12,8 @@ img#erro_404{
   margin-top: -300px;
   margin-left: -400px;
 }
+
+td.no_result{
+  font-weight: bold;
+  text-align: center;
+}

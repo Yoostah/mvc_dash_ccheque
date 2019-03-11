@@ -3,18 +3,18 @@ class Feriado extends model {
 
     
     /**
-     * getUF
-     * RECEBE UM PARAMETRO INTEIRO $uf_cod E RETORNA UM ARRAY COM AS INFORMACOES DO ESTADO COM O CODIGO INFORMADO
+     * getFeriado
+     * RECEBE UM PARAMETRO INTEIRO $fer_id E RETORNA UM ARRAY COM AS INFORMACOES DO FERIADO COM O CODIGO INFORMADO
      *
-     * @param  int $uf_cod
+     * @param  int $fer_id
      *
      * @return $array
      */
-    /*public function getUF(int $uf_cod){
+    public function getFeriado(int $id){
         $array = array();
 
-        $sql = $this->db->prepare("SELECT * FROM uf_estado WHERE uf_cod = :cod");
-        $sql->bindValue(":cod", $uf_cod);
+        $sql = $this->db->prepare("SELECT * FROM feriados WHERE fer_id = :id");
+        $sql->bindValue(":id", $id);
         $sql->execute();
 
         if ($sql->rowCount() > 0) { 
@@ -22,7 +22,7 @@ class Feriado extends model {
         }
 
         return $array;
-    }*/
+    }
 
     
     /**
@@ -57,20 +57,20 @@ class Feriado extends model {
     }
 
     /**
-     * deleteUF
-     * RECEBE UM PARAMETRO INTEIRO $uf_cod E EFETUA O DELETE DDO BANCO.
+     * deleteFeriado
+     * RECEBE UM PARAMETRO INTEIRO $fer_id E EFETUA O DELETE DO BANCO.
      * CASO HAJA ALGUM PROBLEMA RETORNA FALSE
      *  
-     * @param  int $cod
+     * @param  int $id
      *
      * @return boolean
      */
-    /*public function deleteUF(int $cod){
-        $sql = $this->db->prepare("DELETE FROM uf_estado WHERE uf_cod = :cod");
-        $sql->bindValue(":cod", $cod);
+    public function deleteFeriado(int $id){
+        $sql = $this->db->prepare("DELETE FROM feriados WHERE fer_id = :id");
+        $sql->bindValue(":id", $id);
         return $sql->execute();
 
-    }*/
+    }
 
     /**
      * listFeriado
@@ -81,7 +81,7 @@ class Feriado extends model {
     public function listFeriado(int $usu_id){
         $array = array();
 
-		$sql = $this->db->prepare('SELECT DATE_FORMAT(fer_data, "%d/%m/%Y") AS fer_data, fer_data AS dia, fer_nome, fer_tipo, mun_nome as fer_cidade, fer_descricao 
+		$sql = $this->db->prepare('SELECT DATE_FORMAT(fer_data, "%d/%m/%Y") AS fer_data, fer_data AS dia, fer_nome, fer_tipo, mun_nome as fer_cidade, fer_descricao, fer_id 
 								   FROM feriados JOIN mun_municipio ON fer_mun_id = mun_id 
 								   WHERE fer_usu = :user
 								   ORDER BY dia');
