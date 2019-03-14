@@ -19,9 +19,9 @@ class Feriado extends model {
 
         if ($sql->rowCount() > 0) { 
             $array = $sql->fetch();
+            
         }
-
-        return $array;
+        return ( json_encode( $array ) );
     }
 
     

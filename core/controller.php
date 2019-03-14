@@ -16,4 +16,10 @@ class controller {
 		require 'views/'.$viewName.'.php';
 	}
 
+	public function getTemplatePart($templateName, $templateData = array()){
+		
+		extract($templateData);
+		require 'template/'.$templateName.'.php';
+	}
+
 }

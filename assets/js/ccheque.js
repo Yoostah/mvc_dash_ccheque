@@ -1,5 +1,18 @@
 function editar_feriado(id) {
-    $('#edit_modal').modal('show');
+    $.ajax({
+        url: 'feriado/editar',
+        type: 'POST',
+        data: { id: id },
+        beforeSend: function () {
+            $('#edit_modal').find('modal_body').html('Carregando');
+            $('#edit_modal').modal('show');
+        },
+        success: function (html) {
+            console.log(html);
+            $('#edit_modal').find('.modal-body').html(html);
+            $('#edit_modal').modal('show');
+        }
+    });
 
 }
 
