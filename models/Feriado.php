@@ -78,7 +78,7 @@ class Feriado extends model {
      * CASO ESTEJA VAZIO, RETORNA UM ARRAY VAZIO
      * @return array
      */
-    public function listFeriado(int $usu_id){
+    public function listFeriados(int $usu_id){
         $array = array();
 
 		$sql = $this->db->prepare('SELECT DATE_FORMAT(fer_data, "%d/%m/%Y") AS fer_data, fer_data AS dia, fer_nome, fer_tipo, mun_nome as fer_cidade, fer_descricao, fer_id 
