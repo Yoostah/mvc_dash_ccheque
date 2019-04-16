@@ -14,26 +14,16 @@
 				<div class="table-responsive">
 					<table class="table table-hover">
 						<thead>
-							<th>
-								Data
-							</th>
-							<th>
-								Nome
-							</th>
-							<th>
-								Tipo
-							</th>
-							<th>
-								Cidade
-							</th>
-							<th class="text-right">
-								Opções
-							</th>							
+							<th>Data</th>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Cidade</th>
+							<th class="text-right">Opções</th>							
 						</thead>
 						<tbody>
 							<?php 
 								if (count($feriados) == 0){
-									echo '<tr><td class="no_result" colspan="5">Nenhum Feriado cadastrado.</td></tr>';
+									echo '<tr><td class="no_result" colspan="100">Nenhum Feriado cadastrado.</td></tr>';
 								}else{
 									foreach($feriados as $key => $value){								
 										echo '<tr>';
