@@ -2,10 +2,16 @@
 class bancoController extends controller {
 
 	public function index() {
+		$banco = new Banco();
+
+		$usu_id = 1;
+
 		$dados = array(
 			'titulo' => 'Index Banco',
-			'menu' => 'banco' 
+			'menu' => 'banco',
+			'bancos' => $banco->listBancos($usu_id) 
 		);
+
 		$this->loadTemplate('banco', $dados);
 
 	}

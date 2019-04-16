@@ -2,10 +2,16 @@
 class chequeController extends controller {
 
 	public function index() {
+		$cheque = new Cheque();
+
+		$usu_id = 1;
+
 		$dados = array(
 			'titulo' => 'Index Cheque',
-			'menu' => 'cheque'
+			'menu' => 'cheque',
+			'cheques' => $cheque->listCheques($usu_id) 
 		);
+
 		$this->loadTemplate('cheque', $dados);
 
 	}

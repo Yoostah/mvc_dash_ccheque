@@ -9,7 +9,7 @@ class feriadoController extends controller {
 		$dados = array(
 			'titulo' => 'Index Feriado',
 			'menu' => 'feriado',
-			'feriados' => $feriado->listFeriado($usu_id) 
+			'feriados' => $feriado->listFeriados($usu_id) 
 		);
 
 		$this->loadTemplate('feriado', $dados);
