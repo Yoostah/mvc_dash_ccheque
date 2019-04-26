@@ -34,7 +34,7 @@
 							<div class="form-group">
 								<label class="bmd-label-floating">Estado</label>
 								<select name="cod_estados" id="cod_estados" class="form-control">
-									<option value=""></option>
+									<option value="">-- Escolha um Estado --</option>
 									<?php
 										foreach ($estados as $key => $value) {
 											echo '<option value="'.$value['uf_cod'].'">'.$value['uf_nome'].'</option>';
@@ -48,7 +48,7 @@
 							<div class="form-group">
 								<label class="bmd-label-floating">Município</label>
 								<select name="cod_cidade" id="cod_cidade" class="form-control" required>
-									  <option value="">-- Escolha um estado --</option>
+									  <option value="">-- Nenhum Estado selecionado --</option>
 								</select>	  
 							</div>
 						</div>						
@@ -64,7 +64,7 @@
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-warning pull-right">Cadastrar Feriado</button>
+					<button type="submit" class="btn btn-warning pull-right" >Cadastrar Feriado</button>
 					<div class="clearfix"></div>
 				</form>
 			</div>

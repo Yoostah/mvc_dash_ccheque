@@ -10,7 +10,7 @@ class _MUNICIPIO extends model {
     public function listMun_UF_JSON($uf_cod){
         $array = array();
 
-        $sql = $this->db->prepare("SELECT mun_cod, mun_nome FROM mun_municipio WHERE uf_id = :estado ORDER BY mun_nome");
+        $sql = $this->db->prepare("SELECT mun_cod, mun_nome, uf_id FROM mun_municipio WHERE uf_id = :estado ORDER BY mun_nome");
         $sql->bindValue(":estado", $uf_cod);
         $sql->execute();
 

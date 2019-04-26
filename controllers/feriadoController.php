@@ -44,13 +44,22 @@ class feriadoController extends controller {
 
 	public function editar() {
 		if (isset($_POST['id']) && !empty($_POST['id'])){
+			$estados = new _UF();
+
+			$estados = $estados->listUF();				
+
 			$id = addslashes($_POST['id']);
 			$feriado = new Feriado();
 
 			//Retorna um JSON com os dados do feriado e converte em um array associativo para ser usado no getTemplate
 			$feriado = json_decode($feriado->getFeriado($id), true);
+
+			$dados = array(				
+				'feriado' => $feriado,
+				'estados' => $estados
+			);
 	
-			$this->getTemplatePart('temp__edit_feriado', $feriado);
+			$this->getTemplatePart('temp__edit_feriado', $dados);
 						
 		}else{
 			echo 'Nenhum ID recebido';
@@ -89,7 +98,7 @@ class feriadoController extends controller {
 			'titulo' => 'Index Feriado',
 			'menu' => 'feriado',
 			'cadastro' => $cadastro,
-			'feriados' => $feriado->listFeriado($usu_id) 
+			'feriados' => $feriado->listFeriados($usu_id) 
 		);
 
 		$this->loadTemplate('feriado', $dados);	
