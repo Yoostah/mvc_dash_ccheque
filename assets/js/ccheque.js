@@ -1,3 +1,6 @@
+
+var BASE_URL = "http://localhost:8080/mvc_dash_ccheque/"
+
 $(document).ready(function () {
     $().ready(function () {
         $sidebar = $('.sidebar');
@@ -158,7 +161,6 @@ $(document).ready(function () {
         });
 
         $('#cod_estados').change(function () {
-            console.log('entrei');
             if ($(this).val()) {
                 $('#cod_cidade').hide();
                 $('.carregando').show();
@@ -192,7 +194,7 @@ $(document).ready(function () {
 
 function editar_feriado(id) {
     $.ajax({
-        url: 'feriado/editar',
+        url: `${BASE_URL}feriado/editar`,
         type: 'POST',
         data: { id: id },
         beforeSend: function () {
