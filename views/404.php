@@ -1,4 +1,4 @@
-
+<?php print_r($_GET) ?>
 <div class="container-fluid">
 	<div class="container">
 		<div class="bem_vindo">

@@ -63,6 +63,8 @@
                 <button type="submit" class="btn btn-warning pull-right" >Salvar Alterações</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 		    </div>
+            <input type="text" name="user" value="<?php echo $feriado['fer_usu']; ?>">
+            <input type="text" name="feriado" value="<?php echo $feriado['fer_id']; ?>">
         </form>
     </div>
 </div>

@@ -77,33 +77,68 @@ class feriadoController extends controller {
 	}
 
 	public function salvar() {
-
-		$feriado = new Feriado();
-
-		$usu_id = 1;
-
-		$feriado_nome = $_POST['nome'];
-		$feriado_data = date("Y-m-d", strtotime($_POST['data']));
-		$feriado_tipo = $_POST['tipo'];
-		$feriado_municipio = $_POST['cod_cidade'];
-
-		if(isset($_POST['descricao']) && !empty($_POST['descricao']))
-			$feriado_descricao = $_POST['descricao'];
-		else
-			$feriado_descricao = '';		
 		
-		$cadastro = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+		$feriado = new Feriado();		
 		
-		$dados = array(
-			'titulo' => 'Index Feriado',
-			'menu' => 'feriado',
-			'cadastro' => $cadastro,
-			'feriados' => $feriado->listFeriados($usu_id) 
-		);
+		//UPDATE
+		if ( (isset($_POST['user']) && !empty($_POST['user'])) && (isset($_POST['feriado']) && !empty($_POST['feriado'])) ) {
+			$user = $_POST['user'];
+			$id_feriado = $_POST['feriado'];
 
-		$this->loadTemplate('feriado', $dados);	
+			$feriado = json_decode($feriado->getFeriado($id_feriado), true);
+			
+			//REVALIDAÇÃO DE ID/USER
+			if($feriado['fer_usu'] == $user && $feriado['fer_id'] == $id_feriado){
+				$feriado = new Feriado();
+				$feriado_nome = $_POST['nome'];
+				$feriado_data = date("Y-m-d", strtotime($_POST['data']));
+				$feriado_tipo = $_POST['tipo'];
+				$feriado_municipio = $_POST['cod_cidade'];
+
+				if(isset($_POST['descricao']) && !empty($_POST['descricao']))
+					$feriado_descricao = $_POST['descricao'];
+				else
+					$feriado_descricao = '';		
+				
+				$cadastro = $feriado->updFeriado($user, $id_feriado, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+				
+				$usu_id = 1;
+
+				$dados = array(
+					'titulo' => 'Index Feriado',
+					'menu' => 'feriado',
+					'feriados' => $feriado->listFeriados($usu_id) 
+				);
+
+				$this->loadTemplate('feriado', $dados);
+			}	
+		}else{ //CADASTRO
+			$usu_id = 1;
+			
+			$feriado_nome = $_POST['nome'];
+			$feriado_data = date("Y-m-d", strtotime($_POST['data']));
+			$feriado_tipo = $_POST['tipo'];
+			$feriado_municipio = $_POST['cod_cidade'];
+
+			if(isset($_POST['descricao']) && !empty($_POST['descricao']))
+				$feriado_descricao = $_POST['descricao'];
+			else
+				$feriado_descricao = '';		
+			
+			$cadastro = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+			
+			$dados = array(
+				'titulo' => 'Index Feriado',
+				'menu' => 'feriado',
+				'cadastro' => $cadastro,
+				'feriados' => $feriado->listFeriados($usu_id) 
+			);
+
+			$this->loadTemplate('feriado', $dados);
+		}	
 		
 		
 	}
+
 
 }
