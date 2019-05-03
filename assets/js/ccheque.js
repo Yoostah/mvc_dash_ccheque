@@ -163,12 +163,11 @@ $(document).ready(function () {
         });
 
         $('#cod_estados').change(function () {
-            console.log('entrei');
             if ($(this).val()) {
                 $('#cod_cidade').hide();
                 $('.carregando').show();
                 $.getJSON(
-                    BASE_URL + 'feriado/selectMun_UF',
+                    `${BASE_URL}feriado/selectMun_UF`,
                     {
                         cod_estados: $(this).val(),
                         ajax: 'true'
@@ -223,7 +222,7 @@ $(document).ready(function () {
 
 function editar_feriado(id) {
     $.ajax({
-        url: BASE_URL + 'feriado/editar',
+        url: `${BASE_URL}feriado/editar`,
         type: 'POST',
         data: { id: id },
         beforeSend: function () {
@@ -249,7 +248,7 @@ function deletar_feriado(id) {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url: BASE_URL + 'feriado/deletar',
+                url: `${BASE_URL}feriado/deletar`,
                 type: 'POST',
                 data: { id: id },
                 success: function () {
