@@ -38,7 +38,7 @@ class Feriado extends model {
      */
     public function addFeriado(int $usu_id, string $nome, string $data, string $tipo, int $municipio, string $descricao = ""){
         
-        $sql = $this->db->prepare("INSERT INTO feriados SET fer_nome = :nome, fer_data = STR_TO_DATE(:data, '%Y-%m-%d'), fer_usu = :user, fer_tipo = :tipo, fer_mun_id = :municipio, fer_descricao = :descricao");
+        $sql = $this->db->prepare("INSERT INTO feriados SET fer_nome = :nome, fer_data = STR_TO_DATE(:data, '%d/%m/%Y'), fer_usu = :user, fer_tipo = :tipo, fer_mun_id = :municipio, fer_descricao = :descricao");
         $sql->bindValue(":nome", $nome);
         $sql->bindValue(":data", $data);
         $sql->bindValue(":user", $usu_id);
@@ -69,7 +69,7 @@ class Feriado extends model {
      */
     public function updFeriado(int $usu_id, int $fer_id, string $nome, string $data, string $tipo, int $municipio, string $descricao = ""){
         
-        $sql = $this->db->prepare("UPDATE feriados SET fer_nome = :nome, fer_data = STR_TO_DATE(:data, '%Y-%m-%d'), fer_tipo = :tipo, fer_mun_id = :municipio, fer_descricao = :descricao 
+        $sql = $this->db->prepare("UPDATE feriados SET fer_nome = :nome, fer_data = STR_TO_DATE(:data, '%d/%m/%Y'), fer_tipo = :tipo, fer_mun_id = :municipio, fer_descricao = :descricao 
                                    WHERE fer_id = :id_feriado AND fer_usu = :user");
         $sql->bindValue(":nome", $nome);
         $sql->bindValue(":data", $data);

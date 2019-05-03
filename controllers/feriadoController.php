@@ -91,7 +91,7 @@ class feriadoController extends controller {
 			if($feriado['fer_usu'] == $user && $feriado['fer_id'] == $id_feriado){
 				$feriado = new Feriado();
 				$feriado_nome = $_POST['nome'];
-				$feriado_data = date("Y-m-d", strtotime($_POST['data']));
+				$feriado_data = $_POST['data'];
 				$feriado_tipo = $_POST['tipo'];
 				$feriado_municipio = $_POST['cod_cidade'];
 
@@ -116,7 +116,7 @@ class feriadoController extends controller {
 			$usu_id = 1;
 			
 			$feriado_nome = $_POST['nome'];
-			$feriado_data = date("Y-m-d", strtotime($_POST['data']));
+			$feriado_data = $_POST['data'];
 			$feriado_tipo = $_POST['tipo'];
 			$feriado_municipio = $_POST['cod_cidade'];
 
