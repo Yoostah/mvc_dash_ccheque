@@ -14,6 +14,8 @@
   <link href="<?php echo BASE_URL; ?>assets/dash/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- Meu CSS -->
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/ccheque.css">
+  <!-- Jquery UI -->
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/jquery-ui.css">
 </head>
 
 <body class="dark-edition">
@@ -117,6 +119,8 @@
   <script src="<?php echo BASE_URL; ?>assets/dash/js/core/bootstrap-material-design.min.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/events.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Jquery UI -->
+  <script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.js"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="<?php echo BASE_URL; ?>assets/dash/js/buttons.js"></script>
   <!--  Google Maps Plugin    -->
