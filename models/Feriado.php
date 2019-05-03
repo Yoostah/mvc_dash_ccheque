@@ -13,7 +13,7 @@ class Feriado extends model {
     public function getFeriado(int $id){
         $array = array();
 
-        $sql = $this->db->prepare("SELECT f.*, m.uf_id FROM feriados f JOIN mun_municipio m ON fer_mun_id = mun_id WHERE fer_id = :id");
+        $sql = $this->db->prepare("SELECT f.*, DATE_FORMAT(f.fer_data, '%d/%m/%Y') as DATA_TXT, m.uf_id FROM feriados f JOIN mun_municipio m ON fer_mun_id = mun_id WHERE fer_id = :id");
         $sql->bindValue(":id", $id);
         $sql->execute();
 
