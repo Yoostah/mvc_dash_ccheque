@@ -9,11 +9,11 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group ">
                         <label class="bmd-label-floating">Data</label>
-                        <input type="date" class="form-control" name="data" value="<?php echo $feriado['fer_data'] ?>"required>
+                        <input type="text" class="form-control" name="data" value="<?php echo $feriado['DATA_TXT'] ?>" id="datepicker" required>
                     </div>
-                </div>						
+                </div>							
             </div>
             <div class="row">
                 <div class="col-md-8">
@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label class="bmd-label-floating">Estado</label>
                         <select name="cod_estados" id="cod_estados" class="form-control">
-                            <option value=""></option>
+                            <option value="">-- Escolha um Estado --</option>
                             <?php
                                 foreach ($estados as $key => $value) {
 
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="bmd-label-floating">Município</label>
                         <select name="cod_cidade" id="cod_cidade" class="form-control" required>
-                                <option value="">-- Escolha um estado --</option>
+                                <option value="">-- Nenhum Estado selecionado --</option>
                         </select>	  
                     </div>
                 </div>						
@@ -68,7 +68,17 @@
         </form>
     </div>
 </div>
+
+<!--   Core JS Files   -->
+<script src="<?php echo BASE_URL; ?>assets/dash/js/core/jquery.min.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/dash/js/core/bootstrap-material-design.min.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/dash/js/events.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/dash/js/material-dashboard.js?v=2.1.0"></script>
+<!-- Jquery UI -->
+<script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.js"></script>
 <script>
+    
     $().ready(function () {       
 
         
@@ -78,7 +88,7 @@
                 $('#cod_cidade').hide();
                 $('.carregando').show();
                 $.getJSON(
-                    'feriado/selectMun_UF',
+                    BASE_URL + 'feriado/selectMun_UF',
                     {
                         cod_estados: $(this).val(),
                         ajax: 'true'
@@ -103,7 +113,34 @@
         $('#cod_estados').val(<?php echo $feriado['uf_id']; ?>);
         $('#cod_estados').change();
         
+        $('#datepicker').datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            showWeek: true,
+            firstDay: 1
+        });
 
+        $.datepicker.regional['pt-BR'] = {
+            closeText: 'Fechar',
+            prevText: '&#x3c;Anterior',
+            nextText: 'Pr&oacute;ximo&#x3e;',
+            currentText: 'Hoje',
+            monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda-feira', 'Ter&ccedil;a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
         
     });
 </script>    

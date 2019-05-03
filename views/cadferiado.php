@@ -15,9 +15,9 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="form-group">
+							<div class="form-group ">
 								<label class="bmd-label-floating">Data</label>
-								<input type="date" class="form-control" name="data" required>
+								<input type="text" class="form-control" name="data" id="datepicker" required>
 							</div>
 						</div>						
 					</div>

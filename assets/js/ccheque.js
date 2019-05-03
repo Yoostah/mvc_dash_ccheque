@@ -1,5 +1,10 @@
+var url = window.location.pathname.split('/');
+var BASE_URL = `http://${window.location.host}/${url[1]}/`;
+
+
 $(document).ready(function () {
     $().ready(function () {
+
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -163,7 +168,7 @@ $(document).ready(function () {
                 $('#cod_cidade').hide();
                 $('.carregando').show();
                 $.getJSON(
-                    'selectMun_UF',
+                    BASE_URL + 'feriado/selectMun_UF',
                     {
                         cod_estados: $(this).val(),
                         ajax: 'true'
@@ -183,8 +188,34 @@ $(document).ready(function () {
                 );
             }
         });
+        $('#datepicker').datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            showWeek: true,
+            firstDay: 1
+        });
 
-
+        $.datepicker.regional['pt-BR'] = {
+            closeText: 'Fechar',
+            prevText: '&#x3c;Anterior',
+            nextText: 'Pr&oacute;ximo&#x3e;',
+            currentText: 'Hoje',
+            monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda-feira', 'Ter&ccedil;a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
     }); //READY
 
 
@@ -192,7 +223,7 @@ $(document).ready(function () {
 
 function editar_feriado(id) {
     $.ajax({
-        url: 'feriado/editar',
+        url: BASE_URL + 'feriado/editar',
         type: 'POST',
         data: { id: id },
         beforeSend: function () {
@@ -218,7 +249,7 @@ function deletar_feriado(id) {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url: 'feriado/deletar',
+                url: BASE_URL + 'feriado/deletar',
                 type: 'POST',
                 data: { id: id },
                 success: function () {
@@ -228,7 +259,7 @@ function deletar_feriado(id) {
                         'success'
                     ).then((result) => {
                         if (result.value) {
-                            window.location.href = window.location.href;
+                            window.location.href = BASE_URL + 'feriado';
                         }
                     })
 
