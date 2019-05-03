@@ -20934,7 +20934,7 @@ fieldset[disabled][disabled] .dark-edition .form-control,
 
 .dark-edition .is-focused [class^='bmd-label'],
 .dark-edition .is-focused [class*=' bmd-label'] {
-  color: #9c27b0;
+  color: #ff9800;
 }
 
 .dark-edition .is-focused .bmd-label-placeholder {
