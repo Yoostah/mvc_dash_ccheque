@@ -33,14 +33,18 @@ td.no_result{
 }
 
 #edit_modal .modal-title{
-    background: linear-gradient(60deg, #f5700c, #ff9800);
-    color: #fff;
-    border-radius: 3px;
-    margin-top: -20px;
-    padding: 15px;
+  background: linear-gradient(60deg, #f5700c, #ff9800);
+  color: #fff;
+  border-radius: 3px;
+  margin-top: -20px;
+  padding: 15px;
 }
 
 #edit_modal .modal-header{
-    padding: 0px;
-    display: block;
+  padding: 0px;
+  display: block;
+}
+
+select.form-control option{
+  color: black;
 }

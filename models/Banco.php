@@ -1,13 +1,15 @@
 <?php
 class Banco extends model {
     
-    public function getBanco(int $id){
+    public function getBanco(int $id, int $usu_id){
         $array = array();
 
         $sql = $this->db->prepare('SELECT * 
                                    FROM bancos 
-                                   WHERE banco_id = :id');
+                                   WHERE banco_id = :id
+                                   AND banco_usu = :user');
         $sql->bindValue(":id", $id);
+        $sql->bindValue(":user", $usu_id);
         $sql->execute();
 
         if ($sql->rowCount() > 0) { 

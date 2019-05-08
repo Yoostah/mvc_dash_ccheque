@@ -271,4 +271,21 @@ function deletar_feriado(id) {
         }
     })
 
-} 
+}
+
+function editar_banco(id) {
+    $.ajax({
+        url: `${BASE_URL}banco/editar`,
+        type: 'POST',
+        data: { id: id },
+        beforeSend: function () {
+            $('#edit_modal').find('modal_body').html('Carregando');
+            $('#edit_modal').modal('show');
+        },
+        success: function (html) {
+            $('#edit_modal').find('.modal-body').html(html);
+            $('#edit_modal').modal('show');
+        }
+    });
+
+}

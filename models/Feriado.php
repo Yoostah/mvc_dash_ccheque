@@ -101,7 +101,15 @@ class Feriado extends model {
     public function deleteFeriado(int $id){
         $sql = $this->db->prepare("DELETE FROM feriados WHERE fer_id = :id");
         $sql->bindValue(":id", $id);
-        return $sql->execute();
+        
+        $sql->execute();
+        
+        if($sql->errorCode() == 0) {
+            return true;
+        } else {           
+            $error = $sql->errorInfo();
+            return ($error[2]);
+        }
 
     }
 

@@ -100,13 +100,14 @@ class feriadoController extends controller {
 				else
 					$feriado_descricao = '';		
 				
-				$cadastro = $feriado->updFeriado($user, $id_feriado, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
+				$update = $feriado->updFeriado($user, $id_feriado, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
 				
 				$usu_id = 1;
 
 				$dados = array(
-					'titulo' => 'Index Feriado',
+					'titulo' => 'Atualização Feriado',
 					'menu' => 'feriado',
+					'update' => $update,
 					'feriados' => $feriado->listFeriados($usu_id) 
 				);
 
@@ -128,7 +129,7 @@ class feriadoController extends controller {
 			$cadastro = $feriado->addFeriado($usu_id, $feriado_nome, $feriado_data, $feriado_tipo, $feriado_municipio, $feriado_descricao);
 			
 			$dados = array(
-				'titulo' => 'Index Feriado',
+				'titulo' => 'Cadastro Feriado',
 				'menu' => 'feriado',
 				'cadastro' => $cadastro,
 				'feriados' => $feriado->listFeriados($usu_id) 

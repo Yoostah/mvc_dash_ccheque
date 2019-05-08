@@ -23,10 +23,26 @@ class bancoController extends controller {
 
 	}
 
-	public function consulta() {
-		$dados = array();	
+	public function editar() {
+		if (isset($_POST['id']) && !empty($_POST['id'])){	
 
-		$this->loadTemplate('consbanco', $dados);
+			$usu_id = 1;
+
+			$id = addslashes($_POST['id']);
+			$banco = new Banco();
+
+			//Retorna um JSON com os dados do banco e converte em um array associativo para ser usado no getTemplate
+			$banco = json_decode($banco->getBanco($id, $usu_id), true);
+
+			$dados = array(				
+				'banco' => $banco
+			);
+	
+			$this->getTemplatePart('temp__edit_banco', $dados);
+						
+		}else{
+			echo 'Nenhum ID recebido';
+		}	
 
 	}
 

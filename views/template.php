@@ -113,14 +113,14 @@
       </footer>
     </div>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="<?php echo BASE_URL; ?>assets/dash/js/core/jquery.min.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/core/popper.min.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/core/bootstrap-material-design.min.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/events.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/dash/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Jquery UI -->
-  <script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.js"></script>
+ 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="<?php echo BASE_URL; ?>assets/dash/js/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -137,14 +137,23 @@
   <script src="<?php echo BASE_URL; ?>assets/js/ccheque.js"></script>
    <!-- JS SweetAlert -->
   <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.js"></script>
+   <!-- Jquery UI -->
+   <script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.js"></script>
  
-  <?php 
-  if (isset($cadastro) && $cadastro === true )
-	  echo "<script>$(function() { $.notify({ message: 'Cadastrado com Sucesso!' },{ type: 'success' })});</script>";
-  elseif (isset($cadastro) ) 
-    echo "<script>$(function() { $.notify({ title: '<strong>Não foi possível efetuar o cadastro</strong><br>',
-      message: '[".addslashes($cadastro)."]'},{ type: 'danger' })});</script>";
-  ?>
 </body>
-
+<?php 
+if (isset($cadastro) && $cadastro === true)
+	echo "<script>$(function() { $.notify({ message: 'Cadastrado com Sucesso!' },{ type: 'success' })});</script>";
+elseif (isset($cadastro) ) 
+	echo "<script>$(function() { $.notify({ title: '<strong>Não foi possível efetuar o cadastro</strong><br>',
+	message: '[".addslashes($cadastro)."]'},{ type: 'danger' })});</script>";
+	
+if (isset($update) && $update === true)
+	echo "<script>$(function() { $.notify({ message: 'Atualizado com Sucesso!' },{ type: 'success' })});</script>";
+elseif (isset($update) ) 
+	echo "<script>$(function() { $.notify({ title: '<strong>Não foi possível efetuar a atualização</strong><br>',
+	message: '[".addslashes($update)."]'},{ type: 'danger' })});</script>";
+	  
+		
+?>
 </html>

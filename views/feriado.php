@@ -33,8 +33,8 @@
 										echo '<td>'.$value['fer_cidade'].'</td>';
 										echo '<td class="td-actions text-right">
 												<button rel="tooltip" data-trigger="hover" data-placement="left" data-original-title="'.$value['fer_descricao'].'" class="btn btn-link tooltip-info"><i class="material-icons">info</i></button>
-												<button type="button" rel="tooltip" data-placement="left" data-original-title="Editar Feriado" class="btn btn-link" href="javascript:;" onclick="editar_feriado('.$value['fer_id'].')"><i class="material-icons">edit</i></button>
-												<button type="button" rel="tooltip" data-placement="left" data-original-title="Deletar Feriado" class="btn btn-link" href="javascript:;" onclick="deletar_feriado('.$value['fer_id'].')"><i class="material-icons">close</i></button>											
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="editar_feriado('.$value['fer_id'].')"><i class="material-icons">edit</i></button>
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="deletar_feriado('.$value['fer_id'].')"><i class="material-icons">close</i></button>											
 											</td>';									
 										echo '</tr>';
 									} 
@@ -65,3 +65,4 @@
         <div class="clearfix"></div>
 	</div>
 </div>
+

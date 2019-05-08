@@ -19,7 +19,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label class="bmd-label-floating">Tipo</label>
-                        <input type="text" class="form-control" name="tipo" value="<?php echo $feriado['fer_tipo'] ?>"required>
+                        <input type="text" class="form-control" name="tipo" value="<?php echo $feriado['fer_tipo'] ?>" required>
                     </div>
                 </div>
             </div>	
@@ -63,8 +63,8 @@
                 <button type="submit" class="btn btn-warning pull-right" >Salvar Alterações</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 		    </div>
-            <input type="text" name="user" value="<?php echo $feriado['fer_usu']; ?>">
-            <input type="text" name="feriado" value="<?php echo $feriado['fer_id']; ?>">
+            <input type="hidden" name="user" value="<?php echo $feriado['fer_usu']; ?>">
+            <input type="hidden" name="feriado" value="<?php echo $feriado['fer_id']; ?>">
         </form>
     </div>
 </div>
