@@ -18,33 +18,38 @@ td.no_result{
   text-align: center;
 }
 
-.modal-dialog{
+.mt-35{
+  margin-top: 35px;
+}
+/*.modal-dialog{
   max-width: 60% !important;
-}
+}*/
 
-#edit_modal .modal-content{
+/*#edit_modal .modal-content{
   background-color: #2c2c2c;;
-}
+}*/
 
 #edit_modal .card{
   box-shadow: none;
-  background-color: #2c2c2c;
   margin-bottom: 0px;
 }
 
-#edit_modal .modal-title{
+.form-group input[type="file"]{
+  z-index: 1;
+}
+/*#edit_modal .modal-title{
   background: linear-gradient(60deg, #f5700c, #ff9800);
   color: #fff;
   border-radius: 3px;
   margin-top: -20px;
   padding: 15px;
-}
+}/*
 
-#edit_modal .modal-header{
+/*#edit_modal .modal-header{
   padding: 0px;
   display: block;
-}
+}*/
 
-select.form-control option{
+/*select.form-control option{
   color: black;
-}
+}*/
