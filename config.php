@@ -16,6 +16,12 @@ if(ENVIRONMENT == 'development') {
 	$config['dbpass'] = 'root';
 }
 
+global $color_config;
+
+$color_config['cor_forms'] = 'primary';
+$color_config['cor_background'] = 'black';
+$color_config['cor_menu_lateral'] = 'purple';
+
 global $db;
 try {
 	$db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

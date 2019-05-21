@@ -1,6 +1,13 @@
 <?php
 class controller {
 
+	protected $color_config;
+
+	public function __construct() {
+		global $color_config;
+		$this->color_config = $color_config;
+	}
+
 	public function loadView($viewName, $viewData = array()) {
 		extract($viewData);
 		require 'views/'.$viewName.'.php';
