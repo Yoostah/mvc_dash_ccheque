@@ -13194,7 +13194,7 @@ thead.thead-inverse th {
 }
 .card-plain .card-header:not(.card-avatar) .card-category,
 .card-plain .card-header:not(.card-avatar) .card-description {
- color:#FFF;
+ color:#999
 }
 .card-stats .card-header.card-header-icon,
 .card-stats .card-header.card-header-text {
