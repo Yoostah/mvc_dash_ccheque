@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 
+
 <head>
   <title>Controle de Cheque </title>
   <!-- Required meta tags -->
@@ -11,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/dash/css/google_material_icons.css" />
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
-  <link href="<?php echo BASE_URL; ?>assets/dash/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link href="<?php echo BASE_URL; ?>assets/dash/css/material-dashboard-pro.css?v=2.1.0" rel="stylesheet" />
   <!-- Meu CSS -->
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/ccheque.css">
   <!-- Jquery UI -->
@@ -20,7 +21,7 @@
 
 <body class="dark-edition">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange" data-background-color="black" data-image="<?php echo BASE_URL; ?>assets/dash/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="<?php echo $this->color_config['cor_menu_lateral']; ?>" data-background-color="<?php echo $this->color_config['cor_background'];?>" data-image="<?php echo BASE_URL; ?>assets/dash/img/sidebar-2.jpg">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
