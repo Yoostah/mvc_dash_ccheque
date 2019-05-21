@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card card-plain">
-			<div class="card-header card-header-primary">
+			<div class="card-header card-header-<?php echo $this->color_config['cor_forms']; ?>">
 				<h4 class="card-title">Bancos</h4>
 				<p class="card-category">Relação dos Bancos cadastrados</p>
 			</div>
@@ -36,14 +36,19 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="edit_modal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
+				<div id="edit_modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Edição de Banco</h5>
-							</div>
-							<div class="modal-body">
-								<p>Modal body text goes here.</p>
+							<div class="card card-signup card-plain">
+								<div class="modal-header">
+									<div class="card-header card-header-<?php echo $this->color_config['cor_forms']; ?> text-center">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											<i class="material-icons">fechar</i>
+										</button>
+										<h4 class="card-title">Edição de Banco</h4>										
+									</div>
+								</div>
+								<div class="modal-body"></div>								
 							</div>
 						</div>
 					</div>
@@ -52,7 +57,7 @@
 			
 		</div>
 		<form>
-			<button formaction="<?php echo BASE_URL; ?>banco/cadastrar" class="btn btn-warning pull-right">Adicionar Banco</button>			
+			<button formaction="<?php echo BASE_URL; ?>banco/cadastrar" class="btn btn-<?php echo $this->color_config['cor_forms']; ?> pull-right">Adicionar Banco</button>			
 		</form>		
         <div class="clearfix"></div>
 	</div>

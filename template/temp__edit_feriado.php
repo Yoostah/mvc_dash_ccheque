@@ -49,9 +49,8 @@
                 </div>						
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-35">
                     <div class="form-group">
-                        <label>Descrição (opcional)</label>
                         <div class="form-group">
                             <label class="bmd-label-floating"> Adicione uma breve descrição do Feriado</label>
                             <textarea class="form-control" rows="5" name="descricao"><?php echo $feriado['fer_descricao'] ?></textarea>
@@ -60,9 +59,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-warning pull-right" >Salvar Alterações</button>
+                <button type="submit" class="btn btn-<?php echo $this->color_config['cor_forms']; ?> pull-right" >Salvar Alterações</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-		    </div>
+            </div>
             <input type="hidden" name="user" value="<?php echo $feriado['fer_usu']; ?>">
             <input type="hidden" name="feriado" value="<?php echo $feriado['fer_id']; ?>">
         </form>

@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col">
 		<div class="card">
-			<div class="card-header card-header-warning">
+			<div class="card-header card-header-<?php echo $this->color_config['cor_forms']; ?>">
 				<h4 class="card-title">Cadastro de Feriado</h4>
 				<p class="card-category">Complete as informações</p>
 			</div>
@@ -54,17 +54,14 @@
 						</div>						
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12 mt-35">							
 							<div class="form-group">
-								<label>Descrição (opcional)</label>
-								<div class="form-group">
-									<label class="bmd-label-floating"> Adicione uma breve descrição do Feriado</label>
-									<textarea class="form-control" rows="5" name="descricao"></textarea>
-								</div>
+								<label class="bmd-label-floating"> Adicione uma breve descrição do Feriado</label>
+								<textarea class="form-control form-control-danger" rows="5" name="descricao"></textarea>
 							</div>
-						</div>
+						</div>				
 					</div>
-					<button type="submit" class="btn btn-warning pull-right" >Cadastrar Feriado</button>
+					<button type="submit" class="btn btn-<?php echo $this->color_config['cor_forms']; ?> pull-right" >Cadastrar Feriado</button>
 					<div class="clearfix"></div>
 				</form>
 			</div>
