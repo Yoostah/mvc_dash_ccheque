@@ -1,3 +1,4 @@
+<script>
 var url = window.location.pathname.split('/');
 var BASE_URL = `http://${window.location.host}/${url[1]}/`;
 
@@ -239,7 +240,7 @@ function editar_feriado(id) {
 
 function deletar_feriado(id) {
     Swal.fire({
-        title: 'Deseja realmente deletar este feriado?',
+        title: 'Deseja realmente deletar este Feriado?',
         text: 'Não será possível reverter a exclusão!',
         type: 'warning',
         showCancelButton: true,
@@ -254,7 +255,7 @@ function deletar_feriado(id) {
                 success: function () {
                     Swal.fire(
                         'Deletado!',
-                        'O feriado foi deletado do sistema.',
+                        'O Feriado foi deletado do sistema.',
                         'success'
                     ).then((result) => {
                         if (result.value) {
@@ -289,3 +290,40 @@ function editar_banco(id) {
     });
 
 }
+
+function deletar_banco(id, cod) {
+    Swal.fire({
+        title: 'Deseja realmente deletar este Banco?',
+        text: 'Não será possível reverter a exclusão!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, excluir!',
+        cancelButtonText: 'Não, cancelar'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: `${BASE_URL}banco/deletar`,
+                type: 'POST',
+                data: { id: id, cod: cod },
+                success: function () {
+                    Swal.fire(
+                        'Deletado!',
+                        'O Banco foi deletado do sistema.',
+                        'success'
+                    ).then((result) => {
+                        if (result.value) {
+                            window.location.href = BASE_URL + 'banco';
+                        }
+                    })
+
+
+                }
+            });
+
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.close()
+        }
+    })
+
+}
+</script>
