@@ -25,8 +25,8 @@
 										echo '<td>'.$value['banco_cod'].'</td>';
 										echo '<td>'.$value['banco_nome'].'</td>';
 										echo '<td class="td-actions text-right">
-												<button type="button" class="btn btn-link" href="javascript:;" onclick="editar_banco('.$value['banco_id'].')"><i class="material-icons">edit</i></button>
-												<button type="button" class="btn btn-link" href="javascript:;" onclick="deletar_banco('.$value['banco_id'].')"><i class="material-icons">close</i></button>											
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="editar_banco('.$value['banco_id'].','.$value['banco_cod'].')"><i class="material-icons">edit</i></button>
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="deletar_banco('.$value['banco_id'].','.$value['banco_cod'].')"><i class="material-icons">close</i></button>											
 											  </td>';									
 										echo '</tr>';
 									} 

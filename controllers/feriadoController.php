@@ -13,9 +13,7 @@ class feriadoController extends controller {
 		);
 
 		$this->loadTemplate('feriado', $dados);
-
-
-
+		
 	}
 
 	public function cadastrar() {
