@@ -29,4 +29,10 @@ class controller {
 		require 'template/'.$templateName.'.php';
 	}
 
+	public function debug($valor){
+		echo '<pre>'; 
+		print_r($valor);
+		echo '</pre>';
+	}
+
 }
