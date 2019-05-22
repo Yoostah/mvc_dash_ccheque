@@ -135,11 +135,13 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?php echo BASE_URL; ?>assets/dash/demo/demo.js"></script>
   <!-- JS do Projeto -->
-  <script src="<?php echo BASE_URL; ?>assets/js/ccheque.js"></script>
+  <?php include './assets/js/ccheque_js.php'; ?>
    <!-- JS SweetAlert -->
   <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.js"></script>
    <!-- Jquery UI -->
    <script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.js"></script>
+   <!-- JASNY -->
+   <script src="<?php echo BASE_URL; ?>assets/dash/js/jasny-bootstrap.js"></script>
  
 </body>
 <?php 
