@@ -1,12 +1,15 @@
 <?php
 class Cheque extends model {
     
-    public function getCheque(int $id){
+    public function getCheque(int $id, int $user){
         $array = array();
 
-        $sql = $this->db->prepare('SELECT * 
-                                   FROM cheques 
-                                   WHERE cheque_id = :id');
+        $sql = $this->db->prepare('SELECT c.*, b.banco_logo 
+                                   FROM cheques AS c
+                                   JOIN bancos AS b ON c.chq_banco = b.banco_id
+								   WHERE chq_usu = :user 
+                                   AND chq_id = :id');
+        $sql->bindValue(":user", $user);
         $sql->bindValue(":id", $id);
         $sql->execute();
 
@@ -20,11 +23,11 @@ class Cheque extends model {
     public function listCheques(int $usu_id){
         $array = array();
 
-		$sql = $this->db->prepare('SELECT cheque_id, b.banco_logo, cheque_agencia, cheque_conta_corrente, cheque_num, cheque_valor, cheque_taxa, DATE_FORMAT(cheque_rec_em, "%d/%m/%Y") AS cheque_rec_em, DATE_FORMAT(cheque_bom_para, "%d/%m/%Y") AS cheque_bom_para, DATE_FORMAT(cheque_data_comp, "%d/%m/%Y") AS cheque_data_comp, cheque_dias_correcao, cheque_valor_corrigido, cheque_cliente, cheque_titular  
+		$sql = $this->db->prepare('SELECT chq_id, chq_cod, banco_logo, chq_num, chq_agencia, chq_conta, DATE_FORMAT(chq_bom_para, "%d/%m/%Y") AS chq_bom_para, chq_valor ,chq_titular , chq_cliente, chq_status, chq_usu
 								   FROM cheques AS c
-                                   JOIN bancos AS b ON c.cheque_banco_id = b.banco_id
-								   WHERE cheque_usu = :user
-								   ORDER BY cheque_data_comp');
+                                   JOIN bancos AS b ON c.chq_banco = b.banco_id
+								   WHERE chq_usu = :user
+								   ORDER BY chq_bom_para');
 								   
 		$sql->bindValue(":user", $usu_id);
         $sql->execute();
@@ -32,6 +35,27 @@ class Cheque extends model {
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();
         }
+        
         return $array;
     }
+
+    public function deleteCheque(int $id, int $user){
+        $sql = $this->db->prepare("DELETE FROM cheques WHERE chq_id = :id AND chq_usu = :user");
+        $sql->bindValue(":id", $id);
+        $sql->bindValue(":user", $user);
+        $sql->execute();
+        
+        if($sql->errorCode() == 0) {
+            return true;
+        } else {           
+            $error = $sql->errorInfo();
+            return ($error[2]);
+        }
+
+    }
 }
+
+
+
+
+ 

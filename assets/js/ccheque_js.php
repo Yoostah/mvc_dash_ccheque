@@ -326,4 +326,57 @@ function deletar_banco(id, cod) {
     })
 
 }
+
+function editar_cheque(id) {
+    $.ajax({
+        url: `${BASE_URL}cheque/editar`,
+        type: 'POST',
+        data: { id: id },
+        beforeSend: function () {
+            $('#edit_modal').find('modal_body').html('Carregando');
+            $('#edit_modal').modal('show');
+        },
+        success: function (html) {
+            $('#edit_modal').find('.modal-body').html(html);
+            $('#edit_modal').modal('show');
+        }
+    });
+
+}
+
+function deletar_cheque(id) {
+    Swal.fire({
+        title: 'Deseja realmente deletar este Cheque?',
+        text: 'Não será possível reverter a exclusão!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, excluir!',
+        cancelButtonText: 'Não, cancelar'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: `${BASE_URL}cheque/deletar`,
+                type: 'POST',
+                data: { id: id },
+                success: function () {
+                    Swal.fire(
+                        'Deletado!',
+                        'O Cheque foi deletado do sistema.',
+                        'success'
+                    ).then((result) => {
+                        if (result.value) {
+                            window.location.href = BASE_URL + 'cheque';
+                        }
+                    })
+
+
+                }
+            });
+
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.close()
+        }
+    })
+
+}
 </script>

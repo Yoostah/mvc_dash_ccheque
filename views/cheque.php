@@ -1,3 +1,5 @@
+<?php //$this->debug($cheques); exit;
+?>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card card-plain">
@@ -32,21 +34,21 @@
 									foreach($cheques as $key => $value){								
 										echo '<tr>';
 										echo '<td><img src="'.BASE_URL.'assets/imagens/'.$value['banco_logo'].'.png?'.time().'"></td>';
-										echo '<td>'.$value['cheque_agencia'].'</td>';
-										echo '<td>'.$value['cheque_conta_corrente'].'</td>';
-										echo '<td>'.$value['cheque_num'].'</td>';
-										echo '<td>'.number_format($value['cheque_valor'],2, ',', '.').'</td>';
-										echo '<td>'.$value['cheque_taxa'].'%</td>';
-										echo '<td>'.$value['cheque_rec_em'].'</td>';
-										echo '<td>'.$value['cheque_bom_para'].'</td>';
-										echo '<td>'.$value['cheque_data_comp'].'</td>';
-										echo '<td>'.$value['cheque_dias_correcao'].'</td>';
-										echo '<td>'.number_format($value['cheque_valor_corrigido'],2, ',', '.').'</td>';
-										echo '<td>'.$value['cheque_cliente'].'</td>';
-										echo '<td>'.$value['cheque_titular'].'</td>';
+										echo '<td>'.$value['chq_agencia'].'</td>';
+										echo '<td>'.$value['chq_conta'].'</td>';
+										echo '<td>'.$value['chq_num'].'</td>';
+										echo '<td>'.$value['chq_valor'].'</td>';
+										echo '<td>TAXA</td>';
+										echo '<td>REC EM</td>';
+										echo '<td>'.$value['chq_bom_para'].'</td>';
+										echo '<td>DATA COMP</td>';
+										echo '<td>DIAS</td>';
+										echo '<td>VALOR CORRIGIDO</td>';
+										echo '<td>'.$value['chq_cliente'].'</td>';
+										echo '<td>'.$value['chq_titular'].'</td>';
 										echo '<td class="td-actions text-right">
-												<button type="button" rel="tooltip" data-placement="left" data-original-title="Editar Cheque" class="btn btn-link" href="javascript:;" onclick="editar_cheque('.$value['cheque_id'].')"><i class="material-icons">edit</i></button>
-												<button type="button" rel="tooltip" data-placement="left" data-original-title="Deletar Cheque" class="btn btn-link" href="javascript:;" onclick="deletar_cheque('.$value['cheque_id'].')"><i class="material-icons">close</i></button>											
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="editar_cheque('.$value['chq_id'].')"><i class="material-icons">edit</i></button>
+												<button type="button" class="btn btn-link" href="javascript:;" onclick="deletar_cheque('.$value['chq_id'].')"><i class="material-icons">close</i></button>											
 											</td>';									
 										echo '</tr>';
 									} 
@@ -56,21 +58,19 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="edit_modal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
+				<div id="edit_modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Edição de Cheque</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<p>Modal body text goes here.</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-warning">Salvar Alterações</button>
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+							<div class="card card-signup card-plain">
+								<div class="modal-header">
+									<div class="card-header card-header-<?php echo $this->color_config['cor_forms']; ?> text-center">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											<i class="material-icons">fechar</i>
+										</button>
+										<h4 class="card-title">Edição de Cheque</h4>										
+									</div>
+								</div>
+								<div class="modal-body"></div>								
 							</div>
 						</div>
 					</div>
