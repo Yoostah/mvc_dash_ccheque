@@ -114,13 +114,13 @@ class feriadoController extends controller {
 		}else{ //CADASTRO
 			$usu_id = 1;
 			
-			$feriado_nome = $_POST['nome'];
-			$feriado_data = $_POST['data'];
-			$feriado_tipo = $_POST['tipo'];
-			$feriado_municipio = $_POST['cod_cidade'];
+			$feriado_nome = addslashes($_POST['nome']);
+			$feriado_data = addslashes($_POST['data']);
+			$feriado_tipo = addslashes($_POST['tipo']);
+			$feriado_municipio = addslashes($_POST['cod_cidade']);
 
 			if(isset($_POST['descricao']) && !empty($_POST['descricao']))
-				$feriado_descricao = $_POST['descricao'];
+				$feriado_descricao = addslashes($_POST['descricao']);
 			else
 				$feriado_descricao = '';		
 			

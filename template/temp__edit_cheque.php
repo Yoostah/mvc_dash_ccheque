@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/jasny-bootstrap.css">
 <div class="card">
     <div class="card-body">
         <form method="POST" enctype="multipart/form-data" action="<?php echo BASE_URL; ?>cheque/salvar">            
@@ -63,6 +64,26 @@
                     <div class="form-group ">
                         <label class="bmd-label-floating">Número do Cheque</label>
                         <input type="text" class="form-control" name="chq_num" value="<?php echo $cheque['chq_num'] ?>" required>
+                    </div>
+                </div>         							
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="bmd-label-floating">Bom Para</label>
+                        <input type="text" class="form-control" name="chq_bom_para" value="<?php echo $cheque['chq_bom_para'] ?>" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ">
+                        <label class="bmd-label-floating">Valor</label>
+                        <input type="text" class="form-control" name="chq_valor" value="<?php echo $cheque['chq_valor'] ?>" required>
+                    </div>
+                </div>         							
+                <div class="col-md-4">
+                    <div class="form-group ">
+                        <label class="bmd-label-floating">Status</label>
+                        <input type="text" class="form-control" name="chq_status" value="<?php echo $cheque['chq_status'] ?>" required>
                     </div>
                 </div>         							
             </div>         
