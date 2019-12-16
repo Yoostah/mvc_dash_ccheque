@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/dash/css/jasny-bootstrap.css">
 <div class="card">
     <div class="card-body">
         <form method="POST" enctype="multipart/form-data" action="<?php echo BASE_URL; ?>cheque/salvar">            
